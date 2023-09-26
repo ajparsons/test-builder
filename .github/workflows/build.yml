@@ -10,10 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Build datasette
       uses: mysociety/datasette-lite-builder@main
       with:
         theme: mysoc
-        publish_dir: _site
-   
+        publish_dir: datasette
+    - name: Commit changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      commit_message: Automated Changes
